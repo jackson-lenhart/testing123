@@ -4,30 +4,30 @@
 #include <ctype.h>
 #include <string.h>
 
-typedef struct node {
+typedef struct node { // defining the structure for each node of the list
     char* name;
     char* sport;
     struct node* prev;
     struct node* next;
 }node;
 
-node* head = NULL;
+node* head = NULL; // globally declaring head of list
 
 node* getNewNode(char* name_a, char* sport_a) {
-    node* new_node = malloc(sizeof(node));
+    node* new_node = malloc(sizeof(node)); // allocate memory and ensure success
     if (new_node == NULL) {
         printf("malloc failed");
         return new_node;
     }
     
-    new_node->name = name_a;
+    new_node->name = name_a; // assign the desired values
     new_node->sport = sport_a;
     new_node->next = NULL;
     new_node->prev = NULL;
     return new_node;
 }
 
-void addNode(char* name_a, char* sport_a) {
+void addNode(char* name_a, char* sport_a) { // adds a new node to the head of the list
     node* new_node = getNewNode(name_a, sport_a);
     if (head == NULL) {
         head = new_node;
